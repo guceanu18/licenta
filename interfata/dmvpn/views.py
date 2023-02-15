@@ -14,7 +14,8 @@ def bucuresti(request):
 
     return render(request, 'dmvpn/bucuresti.html')
 
-global bw_list
+
+bw_list = []
 
 def calcul_bw(request):
     t1 = CalculateBandwidthThread()
@@ -46,7 +47,7 @@ def calcul_bw(request):
     bw_list.append(bandwidth)
 
     params = []
-    params.append(bandwidth)
+    params.append(bw_list)
     params.append(protocols)
 
     context = {'params': params}

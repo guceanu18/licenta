@@ -2,11 +2,45 @@
 <html>
   <head>
     <title>Site-ul din Bucuresti</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   </head>
   <body>
 
   <p>Total bandwidth: {{ params.0 }} Kbps</p>
+
+  <canvas id="myChart"></canvas>
+  <script>
+      // Get the canvas element
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      // Get the bandwidth values from the params object
+      var bwValues = {{ params.0|safe }};
+
+      // Create a new chart
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: Array.from({length: bwValues.length}, (_, i) => i+1),
+              datasets: [{
+                  label: 'Bandwidth',
+                  data: bwValues,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  </script>
+
+
   {% for protocol, count in params.1.items %}
     <p>{{ protocol }}: {{ count }}</p>
   {% endfor %}
