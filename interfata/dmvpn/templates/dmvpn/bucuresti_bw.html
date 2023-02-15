@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Site-ul din Bucuresti</title>
+
+  </head>
+  <body>
+
+  <p>Total bandwidth: {{ params.0 }} Kbps</p>
+  {% for protocol, count in params.1.items %}
+    <p>{{ protocol }}: {{ count }}</p>
+  {% endfor %}
+  <meta http-equiv="refresh" content="5">
+
+
+
+
+
+  </body>
+</html>
