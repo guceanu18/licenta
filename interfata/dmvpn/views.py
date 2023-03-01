@@ -25,17 +25,24 @@ def calcul_bw(request):
     end_time = None
     bytes_total = 0
     protocols = {}
+    packets_processed = 0
 
     for packet in t1.cap:
         if not start_time:
             start_time = float(packet.sniff_timestamp)
         end_time = float(packet.sniff_timestamp)
         bytes_total += int(packet.length)
+
         protocol = packet.highest_layer
         if protocol in protocols:
             protocols[protocol] += 1
         else:
             protocols[protocol] = 1
+
+        packets_processed += 1
+        if packets_processed == 1000:
+            t1.cap.clear()
+            packets_processed = 0
 
     elapsed_time = end_time - start_time
     bandwidth = bytes_total / elapsed_time
