@@ -4,21 +4,31 @@ from threading import Thread
 import pyshark
 from .thread import *
 
+start_capture = None
+
 
 def index(request):
+    if request.method == 'POST':
+        global start_capture
+        if start_capture:
+            start_capture.stop()
+            start_capture = None
     return render(request, 'dmvpn/index.html')
 
 
 def bucuresti(request):
-    CreateWiresharkThread().start()
-
+    global start_capture
+    if not start_capture:
+        start_capture = StartCaptureBucuresti()
+        start_capture.start()
     return render(request, 'dmvpn/bucuresti.html')
 
 
 bw_list = []
 
+
 def calcul_bw(request):
-    t1 = CalculateBandwidthThread()
+    t1 = ReadCaptureBucuresti()
     t1.start()
 
     start_time = None

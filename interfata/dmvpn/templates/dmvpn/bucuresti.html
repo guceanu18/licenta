@@ -5,14 +5,16 @@
   </head>
   <body>
 
+  <div class="form-container">
+    <form action="{% url 'calcul_bw' %}" method="get">
+      <button class="button-primary" type="submit">Afiseaza parametri</button>
+    </form>
+  </div>
 
-  <form action="{% url 'calcul_bw' %}" method="get">
-    <input type="submit" value="Open Thread">
-  </form>
-
-
-
-
+  <div class="bucuresti-info">
+    <h2>Informații despre site-ul din București</h2>
+    <p>Aici vor fi scrise informații despre site-ul din București!</p>
+  </div>
 
   </body>
 </html>

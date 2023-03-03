@@ -85,6 +85,11 @@
       <p>{{ protocol }}: {{ count }}</p>
     {% endfor %}
 
+    <form action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Inapoi acasa">
+    </form>
+
     <meta http-equiv="refresh" content="5">
   </body>
 </html>
