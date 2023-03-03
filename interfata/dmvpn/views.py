@@ -5,6 +5,7 @@ import pyshark
 from .thread import *
 
 start_capture = None
+bw_list = []
 
 
 def index(request):
@@ -18,16 +19,17 @@ def index(request):
 
 def bucuresti(request):
     global start_capture
+    bw_list.clear()
     if not start_capture:
         start_capture = StartCaptureBucuresti()
         start_capture.start()
     return render(request, 'dmvpn/bucuresti.html')
 
 
-bw_list = []
 
 
-def calcul_bw(request):
+
+def calcul_bw_buc(request):
     t1 = ReadCaptureBucuresti()
     t1.start()
 
@@ -70,3 +72,57 @@ def calcul_bw(request):
     context = {'params': params}
 
     return render(request, 'dmvpn/bucuresti_bw.html', context)
+
+
+def brasov(request):
+    global start_capture
+    bw_list.clear()
+    if not start_capture:
+        start_capture = StartCaptureBrasov()
+        start_capture.start()
+    return render(request, 'dmvpn/brasov.html')
+
+
+def calcul_bw_bv(request):
+    t1 = ReadCaptureBrasov()
+    t1.start()
+
+    start_time = None
+    end_time = None
+    bytes_total = 0
+    protocols = {}
+    packets_processed = 0
+
+    for packet in t1.cap:
+        if not start_time:
+            start_time = float(packet.sniff_timestamp)
+        end_time = float(packet.sniff_timestamp)
+        bytes_total += int(packet.length)
+
+        protocol = packet.highest_layer
+        if protocol in protocols:
+            protocols[protocol] += 1
+        else:
+            protocols[protocol] = 1
+
+        packets_processed += 1
+        if packets_processed == 1000:
+            t1.cap.clear()
+            packets_processed = 0
+
+    elapsed_time = end_time - start_time
+    bandwidth = bytes_total / elapsed_time
+    # rezultatul in Bytes/s
+
+    bandwidth = bandwidth * 8 / 1000
+    # rezultatul in Kbps
+
+    bw_list.append(bandwidth)
+
+    params = []
+    params.append(bw_list)
+    params.append(protocols)
+
+    context = {'params': params}
+
+    return render(request, 'dmvpn/brasov_bw.html', context)

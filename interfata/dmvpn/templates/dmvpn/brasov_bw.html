@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Site-ul din Brasov</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      canvas {
+        max-width: 1920px;
+        max-height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>Total bandwidth: {{ params.0 }} Kbps</p>
+
+    <canvas id="myChart"></canvas>
+    <script>
+      // Get the canvas element
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      // Get the bandwidth values from the params object
+      var bwValues = {{ params.0|safe }};
+
+      // Create a new chart
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: Array.from({length: bwValues.length}, (_, i) => i+1),
+              datasets: [{
+                  label: 'Bandwidth',
+                  data: bwValues,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+    </script>
+
+    <canvas id="protocols-chart"></canvas>
+
+    <script>
+      // Get the protocols data from the template context
+      var protocols = {{ params.1|safe }};
+
+      // Extract the protocol names and counts from the protocols dictionary
+      var protocolNames = Object.keys(protocols);
+      var protocolCounts = Object.values(protocols);
+
+      // Create a new chart object
+      var ctx = document.getElementById('protocols-chart').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: protocolNames,
+          datasets: [{
+            label: 'Protocol Counts',
+            data: protocolCounts,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    </script>
+
+    {% for protocol, count in params.1.items %}
+      <p>{{ protocol }}: {{ count }}</p>
+    {% endfor %}
+
+    <form action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Inapoi acasa">
+    </form>
+
+    <meta http-equiv="refresh" content="5">
+  </body>
+</html>
