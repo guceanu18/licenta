@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
 
-    #dmvpn/bucuresti/
+    # dmvpn/bucuresti/
     path('bucuresti', views.bucuresti, name='bucuresti'),
     path('bucuresti/bw', views.calcul_bw_buc, name='calcul_bw_buc'),
     path('brasov', views.brasov, name='brasov'),

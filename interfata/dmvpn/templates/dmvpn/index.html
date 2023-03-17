@@ -2,18 +2,43 @@
 <html>
   <head>
     <title>Reteaua DMVPN</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 36px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      area {
+        outline: none;
+      }
+
+      area:hover {
+        opacity: 0.8;
+      }
+    </style>
   </head>
   <body>
-
-
-  {% load static %} <img src="{% static "dmvpn/media/retea.png" %}" id="image1" usemap="#mapname" />
-  <map name="mapname">
-    <area shape="rect" coords="1296,271,1021,69" title="bucuresti" href="/dmvpn/bucuresti">
-    <area shape="rect" coords="360,250,85,48" title="brasov" href="/dmvpn/brasov">
-    <area shape="rect" coords="325,543,138,338" title="cluj" href="/dmvpn/cluj">
-    <area shape="rect" coords="790,723,515,521" title="constanta" href="/dmvpn/constanta">
-  </map>
-
-
+    <h1>Reteaua DMVPN</h1>
+    {% load static %}<img src="{% static "dmvpn/media/retea.png" %}" usemap="#mapname" alt="DMVPN network map" />
+    <map name="mapname">
+      <area shape="rect" coords="1296,271,1021,69" title="Bucuresti" href="/dmvpn/bucuresti">
+      <area shape="rect" coords="360,250,85,48" title="Brasov" href="/dmvpn/brasov">
+      <area shape="rect" coords="325,543,138,338" title="Cluj" href="/dmvpn/cluj">
+      <area shape="rect" coords="790,723,515,521" title="Constanta" href="/dmvpn/constanta">
+    </map>
   </body>
 </html>
