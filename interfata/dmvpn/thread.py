@@ -2,6 +2,8 @@ import threading
 import subprocess
 import pyshark
 import psutil
+import time
+import paramiko
 
 
 class StartCaptureBucuresti(threading.Thread):
@@ -72,4 +74,5 @@ class ReadCaptureBrasov(threading.Thread):
 
     def __init__(self):
         threading.Thread.__init__(self)
+
 

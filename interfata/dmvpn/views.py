@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from threading import Thread
 import pyshark
 from .thread import *
+import time
+import paramiko
+from django.shortcuts import redirect
+
 
 start_capture = None
 bw_list = []
@@ -24,6 +28,196 @@ def bucuresti(request):
         start_capture = StartCaptureBucuresti()
         start_capture.start()
     return render(request, 'dmvpn/bucuresti.html')
+
+
+def phase1(request):
+    # Router credentials
+    HOST_BUC = '192.168.0.100'
+    HOST_BV = '192.168.0.107'
+    HOST_CJ = '192.168.0.106'
+    USER = 'admin'
+    PASSWORD = 'admin '
+
+    # Connect to the router BUC via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_BUC, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('no ip nhrp redirect\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    # Connect to the router BV via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_BV, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('no ip nhrp shortcut\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    # Connect to the router CJ via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_CJ, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('no ip nhrp shortcut\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    return redirect(calcul_bw_buc)
+
+
+def phase3(request):
+    # Router credentials
+    HOST_BUC = '192.168.0.100'
+    HOST_BV = '192.168.0.107'
+    HOST_CJ = '192.168.0.106'
+    USER = 'admin'
+    PASSWORD = 'admin '
+
+    # Connect to the router BUC via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_BUC, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('ip nhrp redirect\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    # Connect to the router BV via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_BV, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('ip nhrp shortcut\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    # Connect to the router CJ via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_CJ, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive session
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('ip nhrp shortcut\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    return redirect(calcul_bw_buc)
 
 
 def calcul_bw_buc(request):
@@ -90,8 +284,6 @@ def calcul_bw_buc(request):
     # rezultatul in Kbps
 
     bw_list.append(bandwidth)
-
-
 
     params = []
     params.append(bw_list)
