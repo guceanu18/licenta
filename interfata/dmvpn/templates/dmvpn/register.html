@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+          <div class="card-header"><h3 class="text-center font-weight-light my-4">Create an account</h3></div>
+          <div class="card-body">
+            <form method="POST">
+              {% csrf_token %}
+              {% for field in form %}
+                <div class="form-floating mb-3">
+                  {{ field.label_tag }}
+                  {% if field.name == 'password' %}
+                    <div class="input-group">
+                      {{ field }}
+                      <button type="button" class="btn btn-outline-secondary toggle-password" data-bs-toggle="tooltip" data-bs-placement="top" title="Show/Hide Password">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </div>
+                  {% else %}
+                    {{ field }}
+                  {% endif %}
+                  {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                <button type="submit" class="btn btn-primary">Create Account</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function() {
+      // Show/Hide password
+      $('.toggle-password').click(function() {
+        $(this).toggleClass('bi-eye bi-eye-slash');
+        var input = $($(this).attr('toggle'));
+        if (input.attr('type') == 'password') {
+          input.attr('type', 'text');
+        } else {
+          input.attr('type', 'password');
+        }
+      });
+    });
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" integrity="sha512-B9r68r1gLHxTP/5fKBE/3Lq5Me5p5i5ZzOioN0ax0X2BumRxlhPb6VYU6n1I7vGibKjatJntVDCnZ/QFq7WyDg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
