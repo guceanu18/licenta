@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Site-ul din Bucuresti</title>
+    <title>Site-ul din Cluj</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -140,19 +140,7 @@
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item">
-                <form action="{% url 'phase3' %}" method="post">
-                  {% csrf_token %}
-                  <button type="submit" id="phase3" class="btn btn-primary">DMVPN Phase 3</button>
-                </form>
-              </a>
-              <a class="dropdown-item">
-                <form action="{% url 'phase1' %}" method="post">
-                  {% csrf_token %}
-                  <button type="submit" id="phase1" class="btn btn-primary">DMVPN Phase 1</button>
-                </form>
-              </a>
-              <a class="dropdown-item">
-                <form action="{% url 'test_delay_buc' %}" method="post">
+                <form action="{% url 'test_delay_cj' %}" method="post">
                   {% csrf_token %}
                   <button type="submit" id="test_delay" class="btn btn-primary">Round-Trip-Time</button>
                 </form>

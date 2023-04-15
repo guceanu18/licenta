@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Site-ul din Cluj</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      .header {
+        background-color: #4c4c4c;
+        background-image: url(header-bg.jpg);
+        background-size: cover;
+        padding: 20px;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      .navbar-brand img {
+        max-width: 100px;
+      }
+
+      .nav-link {
+        color: #fff;
+      }
+
+      .nav-link:hover {
+        color: #f00;
+      }
+
+      .dropdown-menu {
+        background-color: #4c4c4c;
+      }
+
+      .dropdown-item {
+        padding: 10px;
+        margin: 5px;
+      }
+
+      .btn-primary {
+        background-color: #f00;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #fff;
+        color: #f00;
+      }
+
+      #main-header {
+      padding: 1rem;
+      background-color: #4c4c4c;
+      background-size: cover;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #main-nav {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background-color: rgba(0,0,0,0.9);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .fixed-navbar {
+      padding: 0.5rem 0;
+    }
+
+    #main-nav .nav-link.active {
+      font-weight: bold;
+    }
+
+    #main-nav .nav-link:hover {
+      color: #fff;
+    }
+
+    #main-nav .dropdown-menu {
+      animation: fadeInDown 0.5s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translate3d(0, -1rem, 0);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+      .bucuresti-info {
+        margin: 50px;
+        padding: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <header class="bg-dark"  id="main-header">
+    <div class="container">
+      <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+          {% load static %}<img src="{% static "dmvpn/media/upb.png" %}"  alt="ETTI LOGO" class="img-fluid" style="max-width: 100px;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}" >HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'calcul_bw_cj' %}">PARAMETERS</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <body>
+
+
+
+    <div class="bucuresti-info">
+      <h2>Informații despre site-ul din Cluj</h2>
+      <p>Aici vor fi scrise informații despre site-ul din Cluj!</p>
+    </div>
+
+
+
+  </body>
+</html>
