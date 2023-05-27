@@ -181,6 +181,7 @@ def phase3(request):
     HOST_BUC = '192.168.0.98'
     HOST_BV = '192.168.0.97'
     HOST_CJ = '192.168.0.96'
+    HOST_CT = '192.168.0.95'
     USER = 'admin'
     PASSWORD = 'admin '
 
@@ -244,6 +245,34 @@ def phase3(request):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(HOST_CJ, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
+
+    # Start an interactive sessions
+    channel = client.invoke_shell()
+
+    # Wait for the router to respond
+    time.sleep(1)
+
+    # Send commands to configure the router
+    channel.send('configure terminal\n')
+    time.sleep(1)
+    channel.send('int t0\n')
+    time.sleep(1)
+    channel.send('ip nhrp shortcut\n')
+    time.sleep(1)
+
+    # Exit configuration mode
+    channel.send('exit\n')
+
+    # Save the configuration changes
+    channel.send('write memory\n')
+
+    # Close the SSH connection
+    client.close()
+
+    # Connect to the router CT via SSH
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(HOST_CT, username=USER, password=PASSWORD, look_for_keys=False, allow_agent=False)
 
     # Start an interactive session
     channel = client.invoke_shell()
