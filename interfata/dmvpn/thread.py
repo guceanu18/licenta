@@ -15,12 +15,12 @@ class StartCaptureBucuresti(threading.Thread):
 
     def run(self):
         try:
-            myBat = open(r'C:\Users\Guci\Desktop\LicentaDjango\files\bucuresti.bat', 'w+')
-            myBat.write('"C:\Program Files\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
-                        'vunl0_28_0 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\bucuresti.pcap')
+            myBat = open(r'C:\Users\gucea\Desktop\LicentaDjango\files\bucuresti.bat', 'w+')
+            myBat.write(r'"C:\Users\gucea\Documents\Virtual Machines\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
+                        'vunl0_28_0 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\bucuresti.pcap')
             myBat.close()
-            # subprocess.call([r'C:\Users\Guci\Desktop\LicentaDjango\files\bucuresti.bat'])
-            self.process = subprocess.Popen([r'C:\Users\Guci\Desktop\LicentaDjango\files\bucuresti.bat'])
+            # subprocess.call([r'C:\Users\gucea\Desktop\LicentaDjango\files\bucuresti.bat'])
+            self.process = subprocess.Popen([r'C:\Users\gucea\Desktop\LicentaDjango\files\bucuresti.bat'])
             self.process.communicate()
         except Exception as e:
             print(e)
@@ -35,7 +35,7 @@ class StartCaptureBucuresti(threading.Thread):
 
 
 class ReadCaptureBucuresti(threading.Thread):
-    cap = pyshark.FileCapture('C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\bucuresti.pcap')
+    cap = pyshark.FileCapture('C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\bucuresti.pcap')
 
     def __init__(self):
         threading.Thread.__init__(self)
@@ -50,12 +50,12 @@ class StartCaptureBrasov(threading.Thread):
 
     def run(self):
         try:
-            myBat = open(r'C:\Users\Guci\Desktop\LicentaDjango\files\brasov.bat', 'w+')
-            myBat.write('"C:\Program Files\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
-                        'vunl0_10_16 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\brasov.pcap')
+            myBat = open(r'C:\Users\gucea\Desktop\LicentaDjango\files\brasov.bat', 'w+')
+            myBat.write(r'"C:\Users\gucea\Documents\Virtual Machines\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
+                        'vunl0_10_16 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\brasov.pcap')
             myBat.close()
 
-            self.process = subprocess.Popen([r'C:\Users\Guci\Desktop\LicentaDjango\files\brasov.bat'])
+            self.process = subprocess.Popen([r'C:\Users\gucea\Desktop\LicentaDjango\files\brasov.bat'])
             self.process.communicate()
         except Exception as e:
             print(e)
@@ -70,7 +70,7 @@ class StartCaptureBrasov(threading.Thread):
 
 
 class ReadCaptureBrasov(threading.Thread):
-    cap = pyshark.FileCapture('C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\brasov.pcap')
+    cap = pyshark.FileCapture('C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\brasov.pcap')
 
     def __init__(self):
         threading.Thread.__init__(self)
@@ -85,12 +85,12 @@ class StartCaptureCluj(threading.Thread):
 
     def run(self):
         try:
-            myBat = open(r'C:\Users\Guci\Desktop\LicentaDjango\files\cluj.bat', 'w+')
-            myBat.write('"C:\Program Files\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
-                        'vunl0_11_19 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\cluj.pcap')
+            myBat = open(r'C:\Users\gucea\Desktop\LicentaDjango\files\cluj.bat', 'w+')
+            myBat.write(r'"C:\Users\gucea\Documents\Virtual Machines\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
+                        'vunl0_11_19 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\cluj.pcap')
             myBat.close()
 
-            self.process = subprocess.Popen([r'C:\Users\Guci\Desktop\LicentaDjango\files\cluj.bat'])
+            self.process = subprocess.Popen([r'C:\Users\gucea\Desktop\LicentaDjango\files\cluj.bat'])
             self.process.communicate()
         except Exception as e:
             print(e)
@@ -105,7 +105,7 @@ class StartCaptureCluj(threading.Thread):
 
 
 class ReadCaptureCluj(threading.Thread):
-    cap = pyshark.FileCapture('C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\cluj.pcap')
+    cap = pyshark.FileCapture('C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\cluj.pcap')
 
     def __init__(self):
         threading.Thread.__init__(self)
@@ -120,12 +120,12 @@ class StartCaptureConstanta(threading.Thread):
 
     def run(self):
         try:
-            myBat = open(r'C:\Users\Guci\Desktop\LicentaDjango\files\constanta.bat', 'w+')
-            myBat.write('"C:\Program Files\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
-                        'vunl0_12_16 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\constanta.pcap')
+            myBat = open(r'C:\Users\gucea\Desktop\LicentaDjango\files\constanta.bat', 'w+')
+            myBat.write(r'"C:\Users\gucea\Documents\Virtual Machines\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
+                        'vunl0_12_16 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\constanta.pcap')
             myBat.close()
 
-            self.process = subprocess.Popen([r'C:\Users\Guci\Desktop\LicentaDjango\files\constanta.bat'])
+            self.process = subprocess.Popen([r'C:\Users\gucea\Desktop\LicentaDjango\files\constanta.bat'])
             self.process.communicate()
         except Exception as e:
             print(e)
@@ -140,7 +140,7 @@ class StartCaptureConstanta(threading.Thread):
 
 
 class ReadCaptureConstanta(threading.Thread):
-    cap = pyshark.FileCapture('C:\\Users\\Guci\\Desktop\\LicentaDjango\\files\\constanta.pcap')
+    cap = pyshark.FileCapture('C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\constanta.pcap')
 
     def __init__(self):
         threading.Thread.__init__(self)
