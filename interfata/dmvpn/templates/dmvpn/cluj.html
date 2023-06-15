@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Site-ul din Cluj</title>
+    <title>Spoke Cluj</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -131,7 +131,7 @@
   <header class="bg-dark"  id="main-header">
     <div class="container">
       <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="https://upb.ro">
           {% load static %}<img src="{% static "dmvpn/media/upb.png" %}"  alt="ETTI LOGO" class="img-fluid" style="max-width: 100px;" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -157,8 +157,15 @@
 
 
     <div class="bucuresti-info">
-      <h2>Informații despre site-ul din Cluj</h2>
-      <p>Aici vor fi scrise informații despre site-ul din Cluj!</p>
+      <div style="text-align: center;">
+        <h2>Information about the Cluj Site</h2>
+        <img src="{% static 'dmvpn/media/cluj.jpg' %}" alt="Bucharest" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+      </div>
+      <p></p>
+      <p></p>
+      <p>The site in Cluj is a secondary branch in a hub & spoke network. It serves as a spoke, providing access to the central hub and facilitating communication between the devices connected to it and the central hub.</p>
+      <p>In "PARAMETERS" window you can view live graphs with your router performance in the network.</p>
+      <p>In addition to this, from "PARAMETERS" you can test the network delay by hitting Round-Trip-Time button under "TEST THE NETWORK" drop-down.</p>
     </div>
 
 

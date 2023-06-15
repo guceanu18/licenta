@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Site-ul din Bucuresti</title>
+    <title>Hub Bucuresti</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -131,7 +131,7 @@
   <header class="bg-dark"  id="main-header">
     <div class="container">
       <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="https://upb.ro">
           {% load static %}<img src="{% static "dmvpn/media/upb.png" %}"  alt="ETTI LOGO" class="img-fluid" style="max-width: 100px;" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -157,8 +157,17 @@
 
 
     <div class="bucuresti-info">
-      <h2>Informații despre site-ul din București</h2>
-      <p>Aici vor fi scrise informații despre site-ul din București!</p>
+
+      <div style="text-align: center;">
+        <h2>Information about the București Site</h2>
+        <img src="{% static 'dmvpn/media/bucuresti.jpg' %}" alt="Bucharest" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+      </div>
+      <p></p>
+      <p></p>
+      <p>The central router in București serves as the DHCP server for the entire internal network. It is responsible for assigning IP addresses and managing the network configuration for all devices connected to it.</p>
+      <p>In "PARAMETERS" window you can view live graphs with your router performance in the network.</p>
+      <p>In addition to this, from "PARAMETERS" you can manipulate the traffic for DMVPN into Phase 1 or Phase 3.</p>
+      <p>For Phase 1 the traffic between 2 spokes it is redirected to the Bucuresti Hub and for Phase 3 the traffic between 2 spokes it is sent directly to the destination spoke.</p>
     </div>
 
 

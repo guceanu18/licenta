@@ -19,7 +19,6 @@ class StartCaptureBucuresti(threading.Thread):
             myBat.write(r'"C:\Users\gucea\Documents\Virtual Machines\EVE-NG\plink.exe" -ssh -batch -pw eve root@192.168.0.99 "tcpdump -U -i '
                         'vunl0_28_0 -s 0 -w -" | "C:\Program Files\Wireshark\Wireshark.exe" -k -i - -w C:\\Users\\gucea\\Desktop\\LicentaDjango\\files\\bucuresti.pcap')
             myBat.close()
-            # subprocess.call([r'C:\Users\gucea\Desktop\LicentaDjango\files\bucuresti.bat'])
             self.process = subprocess.Popen([r'C:\Users\gucea\Desktop\LicentaDjango\files\bucuresti.bat'])
             self.process.communicate()
         except Exception as e:
