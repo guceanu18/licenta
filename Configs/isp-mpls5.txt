@@ -1,0 +1,161 @@
+
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ISP-MPLS5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition IP_LAN_DE
+ rd 3209:1
+ route-target export 1:1
+ route-target import 1:1
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.5.5 255.255.255.255
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/0
+ ip address 172.16.15.2 255.255.255.252
+ ip ospf network point-to-point
+ duplex full
+ mpls ip
+!
+interface Ethernet1/1
+ ip address 172.16.35.2 255.255.255.252
+ ip ospf network point-to-point
+ duplex full
+ mpls ip
+!
+interface Ethernet1/2
+ no ip address
+ ip ospf network point-to-point
+ shutdown
+ duplex full
+!
+interface Ethernet1/3
+ no ip address
+ ip ospf network point-to-point
+ shutdown
+ duplex full
+!
+interface Ethernet1/4
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/5
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/6
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/7
+ no ip address
+ shutdown
+ duplex full
+!
+router ospf 10
+ network 172.16.0.0 0.0.255.255 area 0
+!
+router bgp 3209
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.2.2 remote-as 3209
+ neighbor 172.16.2.2 update-source Loopback0
+ neighbor 172.16.4.4 remote-as 3209
+ neighbor 172.16.4.4 update-source Loopback0
+ neighbor 172.16.6.6 remote-as 3209
+ neighbor 172.16.6.6 update-source Loopback0
+ neighbor 172.16.7.7 remote-as 3209
+ neighbor 172.16.7.7 update-source Loopback0
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 172.16.2.2 activate
+  neighbor 172.16.2.2 send-community extended
+  neighbor 172.16.2.2 route-reflector-client
+  neighbor 172.16.4.4 activate
+  neighbor 172.16.4.4 send-community extended
+  neighbor 172.16.4.4 route-reflector-client
+  neighbor 172.16.6.6 activate
+  neighbor 172.16.6.6 send-community extended
+  neighbor 172.16.6.6 route-reflector-client
+  neighbor 172.16.7.7 activate
+  neighbor 172.16.7.7 send-community extended
+  neighbor 172.16.7.7 route-reflector-client
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end

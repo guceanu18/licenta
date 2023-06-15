@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="414375cb-7690-441e-8fad-d4b2d032b1cf" name="Changes" comment="Adding Constanta SSH capabilities" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="adc2f822-ab00-4be5-8e0b-30d84345dffe" />
+        <option name="url" value="https://github.com/guceanu18/licenta.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Ldw6hGauOcWysiJYulZcgyHWXz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/gucea/Desktop/LicentaDjango",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Guci\Desktop\LicentaDjango\interfata\dmvpn\templates" />
+      <recent name="C:\Users\Guci\Desktop\LicentaDjango\interfata\dmvpn" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="414375cb-7690-441e-8fad-d4b2d032b1cf" name="Changes" comment="" />
+      <created>1676214093495</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676214093495</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Update bandwidth graph">
+      <created>1676493000119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676493000119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added protocols column graph">
+      <created>1677692389480</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677692389480</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added stop functionality to WireShark thread">
+      <created>1677870444625</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677870444625</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added site Brasov">
+      <created>1677878022373</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677878022373</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added design elements and 2 more parameters: delay and packet drop rate">
+      <created>1679071412264</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679071412264</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added dmvpn phase3 and phase1 scripts">
+      <created>1679163100198</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679163100198</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added much more functionalities and design">
+      <created>1679957899118</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679957899118</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Completed all 4 sites design">
+      <created>1681549718675</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681549718675</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Adding Constanta SSH capabilities">
+      <created>1685194634440</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685194634440</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update bandwidth graph" />
+    <MESSAGE value="Added protocols column graph" />
+    <MESSAGE value="Added stop functionality to WireShark thread" />
+    <MESSAGE value="Added site Brasov" />
+    <MESSAGE value="Added design elements and 2 more parameters: delay and packet drop rate" />
+    <MESSAGE value="Added dmvpn phase3 and phase1 scripts" />
+    <MESSAGE value="Added much more functionalities and design" />
+    <MESSAGE value="Completed all 4 sites design" />
+    <MESSAGE value="Adding Constanta SSH capabilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Constanta SSH capabilities" />
+  </component>
+</project>

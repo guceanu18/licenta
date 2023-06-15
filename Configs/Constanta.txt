@@ -1,0 +1,167 @@
+
+!
+! Last configuration change at 09:33:21 UTC Sat May 27 2023 by admin
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname Constanta
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name cisco.com
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$wNQQ$WLiYwrnQrptkPfQ0fuyfU/
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface Tunnel0
+ bandwidth 1000
+ ip address 10.255.255.4 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication donttell
+ ip nhrp map 10.255.255.1 192.168.71.2
+ ip nhrp map multicast 192.168.71.2
+ ip nhrp network-id 99
+ ip nhrp holdtime 300
+ ip nhrp nhs 10.255.255.1
+ ip nhrp shortcut
+ ip tcp adjust-mss 1360
+ ip ospf network point-to-point
+ delay 1000
+ tunnel source 192.168.41.2
+ tunnel mode gre multipoint
+ tunnel key 100000
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/0
+ ip address 192.168.41.2 255.255.255.252
+ duplex full
+!
+interface Ethernet1/1
+ no ip address
+ duplex full
+!
+interface Ethernet1/1.10
+ encapsulation dot1Q 10
+ ip address 10.4.10.1 255.255.255.0
+ ip helper-address 10.255.255.1
+!
+interface Ethernet1/1.20
+ encapsulation dot1Q 20
+ ip address 10.4.20.1 255.255.255.0
+ ip helper-address 10.255.255.1
+!
+interface Ethernet1/2
+ ip address 192.168.0.95 255.255.255.0
+ duplex full
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/4
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/5
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/6
+ no ip address
+ shutdown
+ duplex full
+!
+interface Ethernet1/7
+ no ip address
+ shutdown
+ duplex full
+!
+router ospf 200
+ network 4.4.4.4 0.0.0.0 area 0
+ network 10.4.0.0 0.0.255.255 area 0
+ network 10.255.255.0 0.0.0.255 area 0
+!
+router bgp 64700
+ bgp log-neighbor-changes
+ network 192.168.41.0 mask 255.255.255.252
+ neighbor 192.168.41.1 remote-as 3209
+ neighbor 192.168.41.1 allowas-in
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list PERMIT_CONN seq 5 permit 10.4.0.0/16
+ip prefix-list PERMIT_CONN seq 10 permit 10.4.0.0/16 le 32
+!
+route-map PERMIT_CONNECTED permit 10
+ match ip address prefix-list PERMIT_CONN
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+end

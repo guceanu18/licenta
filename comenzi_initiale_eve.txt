@@ -1,0 +1,5 @@
+en
+conf t
+crypto key generate rsa mod 1024
+
+sudo ifconfig eth1 10.0.11.111 netmask 255.255.255.0
