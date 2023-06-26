@@ -157,6 +157,18 @@
                   <button type="submit" id="test_delay" class="btn btn-primary">Round-Trip-Time</button>
                 </form>
               </a>
+              <a class="dropdown-item">
+                <form action="{% url 'ipsec_esp' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" id="ipsec_esp" class="btn btn-primary">IPsec ESP</button>
+                </form>
+              </a>
+              <a class="dropdown-item">
+                <form action="{% url 'ipsec_ah' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" id="ipsec_ah" class="btn btn-primary">IPsec AH</button>
+                </form>
+              </a>
             </div>
           </li>
         </ul>

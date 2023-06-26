@@ -3,3 +3,23 @@ conf t
 crypto key generate rsa mod 1024
 
 sudo ifconfig eth1 10.0.11.111 netmask 255.255.255.0
+
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco123 address 192.168.0.0
+crypto ipsec transform-set TRANSFORM_AH ah-sha-hmac
+ mode tunnel
+crypto ipsec transform-set TRANSFORM_ESP esp-3des esp-sha-hmac
+ mode transport
+crypto ipsec profile IPSEC_PROFILE
+ set transform-set TRANSFORM_AH
+crypto ipsec profile IPSEC_PROFILE1
+ set transform-set TRANSFORM_ESP
+
+int t0
+shut
+tunnel protection ipsec profile IPSEC_PROFILE1
+no shut
